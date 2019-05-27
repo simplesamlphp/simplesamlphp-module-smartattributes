@@ -131,7 +131,7 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
 
         $id = $this->addID($request['Attributes'], $request);
 
-        if (isset($id)) {
+        if (!empty($id)) {
             $request['Attributes'][$this->id_attribute] = [$id];
         }
     }
