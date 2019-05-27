@@ -45,13 +45,6 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
      */
     private $add_candidate = true;
 
-    /**
-     * Attributes which should be added/appended.
-     *
-     * @var array Associative array of arrays.
-     */
-    private $attributes = [];
-
 
     /**
      * @param array $config
@@ -138,7 +131,7 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
 
         $id = $this->addID($request['Attributes'], $request);
 
-        if (isset($id)) {
+        if (!empty($id)) {
             $request['Attributes'][$this->id_attribute] = [$id];
         }
     }
