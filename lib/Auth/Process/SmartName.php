@@ -13,14 +13,6 @@ use Webmozart\Assert\Assert;
 class SmartName extends \SimpleSAML\Auth\ProcessingFilter
 {
     /**
-     * Attributes which should be added/appended.
-     *
-     * @var array Associative array of arrays.
-     */
-    private $attributes = [];
-
-
-    /**
      * @param array $attributes
      * @return string|null
      */
