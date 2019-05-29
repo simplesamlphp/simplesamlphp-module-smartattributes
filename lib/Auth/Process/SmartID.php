@@ -2,8 +2,6 @@
 
 namespace SimpleSAML\Module\smartattributes\Auth\Process;
 
-use Webmozart\Assert\Assert;
-
 class SmartID extends \SimpleSAML\Auth\ProcessingFilter
 {
     /**
@@ -55,7 +53,7 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
     {
         parent::__construct($config, $reserved);
 
-        Assert::isArray($config);
+        assert(is_array($config));
 
         if (array_key_exists('candidates', $config)) {
             $this->candidates = $config['candidates'];
@@ -126,8 +124,8 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
      */
     public function process(&$request)
     {
-        Assert::isArray($request);
-        Assert::keyExists($request, 'Attributes');
+        assert(is_array($request));
+        assert(array_key_exists('Attributes', $request));
 
         $id = $this->addID($request['Attributes'], $request);
 
