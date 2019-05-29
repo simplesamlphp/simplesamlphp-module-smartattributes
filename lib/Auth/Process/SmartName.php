@@ -2,8 +2,6 @@
 
 namespace SimpleSAML\Module\smartattributes\Auth\Process;
 
-use Webmozart\Assert\Assert;
-
 /**
  * Filter to set name in a smart way, based on available name attributes.
  *
@@ -82,8 +80,8 @@ class SmartName extends \SimpleSAML\Auth\ProcessingFilter
      */
     public function process(&$request)
     {
-        Assert::isArray($request);
-        Assert::keyExists($request, 'Attributes');
+        assert(is_array($request));
+        assert(array_key_exists('Attributes', $request));
 
         $attributes = &$request['Attributes'];
 
