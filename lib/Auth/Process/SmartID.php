@@ -45,6 +45,10 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
      */
     private $add_candidate = true;
 
+    /**
+     * Whether a missing identifier is o.k.
+     */
+    private $fail_if_empty = true;
 
     /**
      * @param array $config
@@ -84,6 +88,13 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
                 throw new \Exception('SmartID authproc configuration error: \'add_candidate\' should be a boolean.');
             }
         }
+
+	if (array_key_exists('fail_if_empty', $config)) {
+	    $this->fail_if_empty = $config['fail_if_empty'];
+            if (!is_bool($this->fail_if_empty)) {
+               throw new Exception('SmartID authproc configuration error: \'fail_if_empty\' should be a boolean.');
+            }
+        }
     }
 
 
@@ -109,10 +120,16 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
         /*
          * At this stage no usable id_candidate has been detected.
          */
-        throw new \SimpleSAML\Error\Exception('This service needs at least one of the following
+	if ($this->fail_if_empty) {
+	     throw new \SimpleSAML\Error\Exception('This service needs at least one of the following
             attributes to identity users: '.implode(', ', $this->candidates).'. Unfortunately not
             one of them was detected. Please ask your institution administrator to release one of
             them, or try using another identity provider.');
+        } else {
+	    // return an empty identifier, missing id attribute must be handled
+	    // by another authproc filter
+            return ''; 
+	}
     }
 
 
