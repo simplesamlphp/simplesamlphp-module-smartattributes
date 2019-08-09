@@ -27,6 +27,7 @@ The filter has the following configuration options:
 * `id_attribute`. A string to use as the name of the newly added attribute. Defaults to `smart_id`.
 * `add_authority`. A boolean to indicate whether or not to append the SAML AuthenticatingAuthority to the resulting identifier. This can be useful to indicate what SAML IdP was used, in case the original identifier is not scoped. Defaults to `TRUE`.
 * `add_candidate`. A boolean to indicate whether or not to prepend the candidate attribute name to the resulting identifier. This can be useful to indicate the attribute originating the identifier. Defaults to `TRUE`.
+* `fail_if_empty`. A boolean to indicate whether this module reports a failure if no suitable identifier attribute could be found. Set this to `FALSE` if a missing identifier attribute should be handled at a later step in the AuthProc filter queue. Defaults to `TRUE`.
 
 The generated identifiers have the following form:
 
