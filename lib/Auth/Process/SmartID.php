@@ -117,7 +117,8 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
                 }
             }
         }
-        /*
+
+        /**
          * At this stage no usable id_candidate has been detected.
          */
         if ($this->fail_if_empty) {
@@ -126,10 +127,10 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
                 one of them was detected. Please ask your institution administrator to release one of
                 them, or try using another identity provider.');
         } else {
-        /*
-         * Return an empty identifier, 
-         * missing id attribute must be handled by another authproc filter
-         */
+            /**
+             * Return an empty identifier, 
+             * missing id attribute must be handled by another authproc filter
+             */
             return ''; 
         }
     }
