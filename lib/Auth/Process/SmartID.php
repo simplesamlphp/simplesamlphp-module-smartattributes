@@ -120,16 +120,18 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
         /*
          * At this stage no usable id_candidate has been detected.
          */
-	if ($this->fail_if_empty) {
-	     throw new \SimpleSAML\Error\Exception('This service needs at least one of the following
-            attributes to identity users: '.implode(', ', $this->candidates).'. Unfortunately not
-            one of them was detected. Please ask your institution administrator to release one of
-            them, or try using another identity provider.');
+        if ($this->fail_if_empty) {
+            throw new \SimpleSAML\Error\Exception('This service needs at least one of the following 
+                attributes to identity users: '.implode(', ', $this->candidates).'. Unfortunately not
+                one of them was detected. Please ask your institution administrator to release one of
+                them, or try using another identity provider.');
         } else {
-	    // return an empty identifier, missing id attribute must be handled
-	    // by another authproc filter
+        /*
+         * Return an empty identifier, 
+         * missing id attribute must be handled by another authproc filter
+         */
             return ''; 
-	}
+        }
     }
 
 
