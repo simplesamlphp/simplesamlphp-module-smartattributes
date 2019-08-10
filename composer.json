@@ -34,6 +34,7 @@
     },
     "require-dev": {
         "simplesamlphp/simplesamlphp": "^1.17",
+        "simplesamlphp/simplesamlphp-test-framework": "^0.0.8",
         "phpunit/phpunit": "~5.7"
     },
     "support": {
