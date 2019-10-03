@@ -29,7 +29,7 @@ class SmartName extends \SimpleSAML\Auth\ProcessingFilter
         }
 
         if (isset($attributes['sn']) && isset($attributes['givenName'])) {
-            return $attributes['givenName'][0].' '.$attributes['sn'][0];
+            return $attributes['givenName'][0] . ' ' . $attributes['sn'][0];
         }
 
         if (isset($attributes['cn'])) {

@@ -110,10 +110,10 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
         foreach ($this->candidates as $idCandidate) {
             if (isset($attributes[$idCandidate][0])) {
                 if (($this->add_authority) && (isset($state['saml:AuthenticatingAuthority'][0]))) {
-                    return ($this->add_candidate ? $idCandidate.':' : '').$attributes[$idCandidate][0].'!'.
+                    return ($this->add_candidate ? $idCandidate . ':' : '') . $attributes[$idCandidate][0] . '!' .
                         $state['saml:AuthenticatingAuthority'][0];
                 } else {
-                    return ($this->add_candidate ? $idCandidate.':' : '').$attributes[$idCandidate][0];
+                    return ($this->add_candidate ? $idCandidate . ':' : '') . $attributes[$idCandidate][0];
                 }
             }
         }
@@ -122,10 +122,10 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
          * At this stage no usable id_candidate has been detected.
          */
         if ($this->fail_if_empty) {
-            throw new \SimpleSAML\Error\Exception('This service needs at least one of the following 
-                attributes to identity users: '.implode(', ', $this->candidates).'. Unfortunately not
-                one of them was detected. Please ask your institution administrator to release one of
-                them, or try using another identity provider.');
+            throw new \SimpleSAML\Error\Exception('This service needs at least one of the following ' .
+                'attributes to identity users: ' . implode(', ', $this->candidates) . '. Unfortunately not ' .
+                'one of them was detected. Please ask your institution administrator to release one of ' .
+                'them, or try using another identity provider.');
         } else {
             /**
              * Return an empty identifier, 
