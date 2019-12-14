@@ -92,7 +92,7 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
 	if (array_key_exists('fail_if_empty', $config)) {
 	    $this->fail_if_empty = $config['fail_if_empty'];
             if (!is_bool($this->fail_if_empty)) {
-               throw new Exception('SmartID authproc configuration error: \'fail_if_empty\' should be a boolean.');
+               throw new \Exception('SmartID authproc configuration error: \'fail_if_empty\' should be a boolean.');
             }
         }
     }
