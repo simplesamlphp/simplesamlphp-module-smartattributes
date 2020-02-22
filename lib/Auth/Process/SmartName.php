@@ -16,7 +16,7 @@ class SmartName extends \SimpleSAML\Auth\ProcessingFilter
      * @param array $attributes
      * @return string|null
      */
-    private function getFullName($attributes)
+    private function getFullName(array $attributes): ?string
     {
         if (isset($attributes['displayName'])) {
             return $attributes['displayName'][0];
@@ -59,7 +59,7 @@ class SmartName extends \SimpleSAML\Auth\ProcessingFilter
      * @param string $userid
      * @return string|null
      */
-    private function getLocalUser($userid)
+    private function getLocalUser(string $userid): ?string
     {
         if (strpos($userid, '@') === false) {
             return null;
@@ -80,9 +80,8 @@ class SmartName extends \SimpleSAML\Auth\ProcessingFilter
      * @param array &$request  The current request
      * @return void
      */
-    public function process(&$request)
+    public function process(array &$request): void
     {
-        Assert::isArray($request);
         Assert::keyExists($request, 'Attributes');
 
         $attributes = &$request['Attributes'];

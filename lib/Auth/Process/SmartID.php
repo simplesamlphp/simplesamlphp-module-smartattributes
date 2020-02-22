@@ -55,11 +55,9 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
      * @param mixed $reserved
      * @throws \Exception
      */
-    public function __construct($config, $reserved)
+    public function __construct(array $config, $reserved)
     {
         parent::__construct($config, $reserved);
-
-        Assert::isArray($config);
 
         if (array_key_exists('candidates', $config)) {
             $this->candidates = $config['candidates'];
@@ -89,10 +87,10 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
             }
         }
 
-	if (array_key_exists('fail_if_empty', $config)) {
-	    $this->fail_if_empty = $config['fail_if_empty'];
+        if (array_key_exists('fail_if_empty', $config)) {
+            $this->fail_if_empty = $config['fail_if_empty'];
             if (!is_bool($this->fail_if_empty)) {
-               throw new \Exception('SmartID authproc configuration error: \'fail_if_empty\' should be a boolean.');
+                throw new \Exception('SmartID authproc configuration error: \'fail_if_empty\' should be a boolean.');
             }
         }
     }
@@ -104,7 +102,7 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
      * @return string
      * @throws \SimpleSAML\Error\Exception
      */
-    private function addID($attributes, $request)
+    private function addID(array $attributes, array $request): string
     {
         $state = $request['saml:sp:State'];
         foreach ($this->candidates as $idCandidate) {
@@ -128,10 +126,10 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
                 'them, or try using another identity provider.');
         } else {
             /**
-             * Return an empty identifier, 
+             * Return an empty identifier,
              * missing id attribute must be handled by another authproc filter
              */
-            return ''; 
+            return '';
         }
     }
 
@@ -144,9 +142,8 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
      * @param array &$request  The current request
      * @return void
      */
-    public function process(&$request)
+    public function process(array &$request): void
     {
-        Assert::isArray($request);
         Assert::keyExists($request, 'Attributes');
 
         $id = $this->addID($request['Attributes'], $request);
