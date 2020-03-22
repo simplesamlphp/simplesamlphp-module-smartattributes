@@ -3,7 +3,7 @@
     "description": "The SmartAttributes module provides additional authentication processing filters to manipulate attributes.",
     "type": "simplesamlphp-module",
     "keywords": ["simplesamlphp", "smartattributes"],
-    "license": "LGPL-3.0-or-later",
+    "license": "LGPL-2.1-or-later",
     "authors": [
         {
             "name": "Andreas Åkre Solberg",
