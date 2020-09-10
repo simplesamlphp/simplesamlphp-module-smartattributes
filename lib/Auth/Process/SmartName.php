@@ -7,7 +7,6 @@ use Webmozart\Assert\Assert;
 /**
  * Filter to set name in a smart way, based on available name attributes.
  *
- * @author Andreas Åkre Solberg, UNINETT AS.
  * @package SimpleSAMLphp
  */
 class SmartName extends \SimpleSAML\Auth\ProcessingFilter
