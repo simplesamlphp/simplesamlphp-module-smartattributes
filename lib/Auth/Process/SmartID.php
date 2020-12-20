@@ -47,6 +47,7 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
 
     /**
      * Whether a missing identifier is o.k.
+     * @var bool
      */
     private $fail_if_empty = true;
 
