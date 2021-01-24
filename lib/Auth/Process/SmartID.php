@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace SimpleSAML\Module\smartattributes\Auth\Process;
 
 use Exception;
-use SimpleSAML\Error;
 use SimpleSAML\Assert\Assert;
+use SimpleSAML\Error;
 
 class SmartID extends \SimpleSAML\Auth\ProcessingFilter
 {
@@ -65,38 +65,43 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
         parent::__construct($config, $reserved);
 
         if (array_key_exists('candidates', $config)) {
+            Assert::isArray(
+                $config['candidates'],
+                'SmartID authproc configuration error: \'candidates\' should be an array.'
+            );
             $this->candidates = $config['candidates'];
-            if (!is_array($this->candidates)) {
-                throw new Exception('SmartID authproc configuration error: \'candidates\' should be an array.');
-            }
         }
 
         if (array_key_exists('id_attribute', $config)) {
+            Assert::string(
+                $config['id_attribute'],
+                'SmartID authproc configuration error: \'id_attribute\' should be a string.'
+            );
             $this->id_attribute = $config['id_attribute'];
-            if (!is_string($this->id_attribute)) {
-                throw new Exception('SmartID authproc configuration error: \'id_attribute\' should be a string.');
-            }
         }
 
         if (array_key_exists('add_authority', $config)) {
+            Assert::boolean(
+                $config['add_authority'],
+                'SmartID authproc configuration error: \'add_authority\' should be a boolean.'
+            );
             $this->add_authority = $config['add_authority'];
-            if (!is_bool($this->add_authority)) {
-                throw new Exception('SmartID authproc configuration error: \'add_authority\' should be a boolean.');
-            }
         }
 
         if (array_key_exists('add_candidate', $config)) {
+            Assert::boolean(
+                $config['add_candidate'],
+                'SmartID authproc configuration error: \'add_candidate\' should be a boolean.'
+            );
             $this->add_candidate = $config['add_candidate'];
-            if (!is_bool($this->add_candidate)) {
-                throw new Exception('SmartID authproc configuration error: \'add_candidate\' should be a boolean.');
-            }
         }
 
         if (array_key_exists('fail_if_empty', $config)) {
+            Assert::boolean(
+                $config['fail_if_empty'],
+                'SmartID authproc configuration error: \'fail_if_empty\' should be a boolean.'
+            );
             $this->fail_if_empty = $config['fail_if_empty'];
-            if (!is_bool($this->fail_if_empty)) {
-                throw new Exception('SmartID authproc configuration error: \'fail_if_empty\' should be a boolean.');
-            }
         }
     }
 
