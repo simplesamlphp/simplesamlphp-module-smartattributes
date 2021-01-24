@@ -1,15 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SimpleSAML\Module\smartattributes\Auth\Process;
 
-use Webmozart\Assert\Assert;
+use SimpleSAML\Assert\Assert;
+use SimpleSAML\Auth;
 
 /**
  * Filter to set name in a smart way, based on available name attributes.
  *
  * @package SimpleSAMLphp
  */
-class SmartName extends \SimpleSAML\Auth\ProcessingFilter
+class SmartName extends Auth\ProcessingFilter
 {
     /**
      * @param array $attributes
