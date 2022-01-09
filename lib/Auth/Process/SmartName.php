@@ -79,18 +79,18 @@ class SmartName extends Auth\ProcessingFilter
      *
      * Add or replace existing attributes with the configured values.
      *
-     * @param array &$request  The current request
+     * @param array &$state  The current request
      */
-    public function process(array &$request): void
+    public function process(array &$state): void
     {
-        Assert::keyExists($request, 'Attributes');
+        Assert::keyExists($state, 'Attributes');
 
-        $attributes = &$request['Attributes'];
+        $attributes = &$state['Attributes'];
 
         $fullname = $this->getFullName($attributes);
 
         if (isset($fullname)) {
-            $request['Attributes']['smartname-fullname'] = [$fullname];
+            $state['Attributes']['smartname-fullname'] = [$fullname];
         }
     }
 }
