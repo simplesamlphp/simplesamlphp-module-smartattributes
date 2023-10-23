@@ -25,7 +25,7 @@ The filter has the following configuration options:
 	* windowslive_targetedID
 	* linkedin_targetedID
 * `id_attribute`. A string to use as the name of the newly added attribute. Defaults to `smart_id`.
-* `add_authority`. A boolean to indicate whether or not to append the SAML AuthenticatingAuthority to the resulting identifier. This can be useful to indicate what SAML IdP was used, in case the original identifier is not scoped. Defaults to `TRUE`.
+* `add_authority`. A boolean to indicate whether or not to append the SAML AuthenticatingAuthority to the resulting identifier. This can be useful to indicate what SAML IdP was used, in case the original identifier is not scoped. When multiple values are in the AuthenticatingAuthority element, the last (closest to us) will be used. Defaults to `TRUE`.
 * `add_candidate`. A boolean to indicate whether or not to prepend the candidate attribute name to the resulting identifier. This can be useful to indicate the attribute originating the identifier. Defaults to `TRUE`.
 
 The generated identifiers have the following form:

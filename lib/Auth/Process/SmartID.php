@@ -96,9 +96,10 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
         $state = $request['saml:sp:State'];
         foreach ($this->candidates as $idCandidate) {
             if (isset($attributes[$idCandidate][0])) {
-                if (($this->add_authority) && (isset($state['saml:AuthenticatingAuthority'][0]))) {
+                if ($this->add_authority && count($state['saml:AuthenticatingAuthority']) > 0) {
+                    $authority = end($state['saml:AuthenticatingAuthority']);
                     return ($this->add_candidate ? $idCandidate . ':' : '') . $attributes[$idCandidate][0] . '!' .
-                        $state['saml:AuthenticatingAuthority'][0];
+                        $authority;
                 } else {
                     return ($this->add_candidate ? $idCandidate . ':' : '') . $attributes[$idCandidate][0];
                 }
