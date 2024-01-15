@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace SimpleSAML\Module\smartattributes\Auth\Process;
 
-use Exception;
 use SimpleSAML\Assert\Assert;
 use SimpleSAML\Error;
 
@@ -54,6 +53,7 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
      * @var bool
      */
     private bool $fail_if_empty = true;
+
 
     /**
      * @param array $config
