@@ -15,7 +15,7 @@ use SimpleSAML\Auth;
 class SmartName extends Auth\ProcessingFilter
 {
     /**
-     * @param array $attributes
+     * @param array<mixed> $attributes
      * @return string|null
      */
     private function getFullName(array $attributes): ?string
@@ -79,7 +79,7 @@ class SmartName extends Auth\ProcessingFilter
      *
      * Add or replace existing attributes with the configured values.
      *
-     * @param array &$state  The current request
+     * @param array<mixed> &$state  The current request
      */
     public function process(array &$state): void
     {

@@ -56,7 +56,7 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
 
 
     /**
-     * @param array $config
+     * @param array<mixed> $config
      * @param mixed $reserved
      * @throws \Exception
      */
@@ -107,8 +107,8 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
 
 
     /**
-     * @param array $attributes
-     * @param array $request
+     * @param array<mixed> $attributes
+     * @param array<mixed> $request
      * @return string
      * @throws \SimpleSAML\Error\Exception
      */
@@ -150,7 +150,7 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
      *
      * Add or replace existing attributes with the configured values.
      *
-     * @param array &$state  The current request
+     * @param array<mixed> &$state  The current request
      */
     public function process(array &$state): void
     {
