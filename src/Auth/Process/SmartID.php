@@ -108,7 +108,7 @@ class SmartID extends \SimpleSAML\Auth\ProcessingFilter
 
     /**
      * @param array<mixed> $attributes
-     * @param array<mixed> $request
+     * @param array<mixed> $state
      * @return string
      * @throws \SimpleSAML\Error\Exception
      */
